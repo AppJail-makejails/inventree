@@ -43,6 +43,7 @@ CMD tar -C /inventree/src --strip-components=1 -xf /tmp/inventree.tar.gz
 COPY files/patch-InvenTree-InvenTree-settings.py.patch src
 CMD cd /inventree/src; patch < patch-InvenTree-InvenTree-settings.py.patch
 CMD rm -f /inventree/src/InvenTree/InvenTree/settings.py.orig
+CMD rm -f /inventree/src/patch-InvenTree-InvenTree-settings.py.patch
 # Fix permissions to the source tree.
 CMD chown -R inventree:inventree /inventree/src
 # Remove tarball.
