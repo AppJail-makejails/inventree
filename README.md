@@ -250,6 +250,18 @@ inventree not running? (check /inventree/run/pid).
 Starting inventree.
 ```
 
+### Inside the jail
+
+InvenTree uses `invoke` for some administrative operations. To use it, just log into the jail and change the current path to `/inventree/src`.
+
+```
+# appjail login -u inventree inventree
+...
+jail # cd src
+jail # invoke --list
+...
+```
+
 ### Arguments
 
 * `inventree_tag` (default: `13.2-0.12`): See [#tags](#tags).
