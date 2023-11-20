@@ -235,6 +235,21 @@ Run `appjail-director up` and the entire InvenTree stack will be deployed.
 
 **Note#2**: The above configuration files assume that you have DNS enabled and configured to use shorter domain names. See the [AppJail documentation](https://appjail.readthedocs.io) for details.
 
+### Custom Stages
+
+This Makejail defines some custom steps to easily manage the InvenTree web server. They are: `start`, `stop`, `restart` and `check`.
+
+```
+# appjail run -s check inventree
+inventree is running as pid 48482.
+# appjail run -s stop inventree
+Stopping inventree.
+Waiting for PID: 48482.
+# appjail run -s restart inventree
+inventree not running? (check /inventree/run/pid).
+Starting inventree.
+```
+
 ### Arguments
 
 * `inventree_tag` (default: `13.2-0.12`): See [#tags](#tags).
