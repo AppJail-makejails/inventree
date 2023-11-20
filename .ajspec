@@ -1,0 +1,8 @@
+tags: 13.2-0.12
+13.2-0.12.arch: amd64
+13.2-0.12.name: "inventree"
+13.2-0.12.timestamp.amd64: 1700449091
+13.2-0.12.sum.amd64: 3aed182042ad204be987159604b477c84ef3c92dbb2c37ef1267802de8277f77
+13.2-0.12.size.amd64: 313095416
+13.2-0.12.source.amd64: https://images.all101bsd.download/inventree/13.2-0.12-amd64-image.appjail
+13.2-0.12.source.amd64+: http://appjail.hpc.at/inventree/13.2-0.12-amd64-image.appjail

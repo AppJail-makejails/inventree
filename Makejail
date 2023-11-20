@@ -1,0 +1,141 @@
+INCLUDE options/options.makejail
+
+ARG inventree_conf=files/config.yaml
+ARG inventree_gunicorn_conf=files/gunicorn.conf.py
+ARG inventree_tag=13.2-0.12
+
+FROM --entrypoint gh+AppJail-makejails/inventree inventree:${inventree_tag}
+
+CMD echo "======> Installing scripts ... <======"
+COPY --verbose scripts
+
+CMD echo "======> Configuring ... <======"
+
+RAW if [ ! -f "${inventree_conf}" ]; then
+    CMD echo "###> '${inventree_conf}' cannot find InvenTree configuration file. <###"
+    RAW exit 1
+RAW fi
+
+COPY --verbose ${inventree_conf} /inventree/src/InvenTree/config.yaml
+CMD chown inventree:inventree /inventree/src/InvenTree/config.yaml
+CMD chmod 640 /inventree/src/InvenTree/config.yaml
+
+USER inventree
+WORKDIR /scripts
+
+CMD echo "======> Configuring 'Basic Options' ... <======"
+RUN ./basic.sh
+
+CMD echo "======> Configuring 'Administrator Account' ... <======"
+RUN ./admin.sh
+
+CMD echo "======> Configuring 'Secret Key' ... <======"
+RUN ./secret-key.sh
+
+CMD echo "======> Configuring 'Database Options' ... <======"
+RUN ./database.sh
+
+CMD echo "======> Configuring 'Email Settings' ... <======"
+RUN ./email.sh
+
+CMD echo "======> Configuring 'Currencies' ... <======"
+RUN ./currency.sh
+
+CMD echo "======> Configuring 'Allowed Hosts / CORS' ... <======"
+RUN ./cors.sh
+
+CMD echo "======> Configuring 'File Storage Locations' ... <======"
+RUN ./file-storage-locations.sh
+
+CMD echo "======> Configuring 'Background Worker Options' ... <======"
+RUN ./background.sh
+
+CMD echo "======> Configuring 'Login Options' ... <======"
+RUN ./login.sh
+
+CMD echo "======> Configuring 'Sentry Integration' ... <======"
+RUN ./sentry.sh
+
+CMD echo "======> Configuring 'Customisation Options' ... <======"
+RUN ./customisation.sh
+
+CMD echo "======> Configuring 'Plugin Options' ... <======"
+RUN ./plugin.sh
+
+CMD echo "======> Configuring 'Cache Options' ... <======"
+RUN ./cache.sh
+
+CMD echo "======> Configuring 'Extra Options' ... <======"
+RUN ./extras.sh
+
+CMD echo "======> Uninstalling scripts ... <======"
+CMD rm -rf /scripts
+
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -f "/.inventree-done/skip-initialization" ]; then
+    CMD echo "======> Installation appears to have an InvenTree already initialized. <======"
+RAW else
+    CMD echo "======> Initializing ... <======"
+    WORKDIR /inventree/src
+    ENV PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/inventree/.local/bin
+    RUN invoke update
+    CMD mkdir -p /.inventree-done
+    CMD touch /.inventree-done/skip-initialization
+RAW fi
+
+CLEAR workdir
+
+CMD echo "======> Installing startup scripts ... <======"
+COPY --verbose init /inventree
+CMD chown -R inventree:inventree /inventree/init
+
+CMD echo "======> Installing gunicorn configuration file ... <======"
+
+RAW if [ ! -f "${inventree_gunicorn_conf}" ]; then
+    CMD echo "###> '${inventree_gunicorn_conf}' cannot find gunicorn configuration file. <###"
+    RAW exit 1
+RAW fi
+
+COPY --verbose ${inventree_gunicorn_conf} /inventree/src/InvenTree/gunicorn.conf.py
+CMD chown inventree:inventree /inventree/src/InvenTree/gunicorn.conf.py
+
+STOP
+
+STAGE create
+
+CMD --local-jaildir rm -rf inventree/run/*
+
+STAGE start
+
+USER inventree
+WORKDIR /inventree/init
+
+RUN ./start.sh
+RUN ./worker.sh
+
+STAGE custom:start
+
+USER inventree
+WORKDIR /inventree/init
+
+RUN ./start.sh
+
+STAGE custom:stop
+
+USER inventree
+WORKDIR /inventree/init
+
+RUN ./stop.sh
+
+STAGE custom:restart
+
+USER inventree
+WORKDIR /inventree/init
+
+RUN ./restart.sh
+
+STAGE custom:check
+
+USER inventree
+WORKDIR /inventree/init
+
+RUN ./check.sh

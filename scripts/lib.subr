@@ -1,0 +1,41 @@
+INVENTREE_CONFIG="/inventree/src/InvenTree/config.yaml"
+
+select()
+{
+	local out errlevel
+
+	out=`dasel -f "${INVENTREE_CONFIG}" -r yaml "$@"`
+
+	errlevel=$?
+
+	if [ ${errlevel} -ne 0 ]; then
+		err "${out}"
+		exit ${errlevel}
+	fi
+
+	printf "%s\n" "${out}"
+}
+
+put()
+{
+	local out errlevel
+
+	out=`dasel put -f "${INVENTREE_CONFIG}" -r yaml "$@"`
+
+	errlevel=$?
+
+	if [ ${errlevel} -ne 0 ]; then
+		err "${out}"
+		exit ${errlevel}
+	fi
+}
+
+err()
+{
+	echo "###> $* <###"
+}
+
+info()
+{
+	echo "======> $* <======"
+}
