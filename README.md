@@ -257,8 +257,8 @@ InvenTree uses `invoke` for some administrative operations. To use it, just log 
 ```
 # appjail login -u inventree inventree
 ...
-jail # cd src
-jail # invoke --list
+jail $ cd src
+jail $ invoke --list
 ...
 ```
 
