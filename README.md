@@ -21,6 +21,8 @@ appjail makejail \
 
 This Makejail is designed to run InvenTree without preconfiguring it. By default it uses SQLite and some defaults to run smoothly, such as enabling debug mode, so it does not need a static web server, but this approach is recommended only if you need a simple approach. A more robust configuration designed for a production environment can be found in [Deploy using appjail-director](#deploy-using-appjail-director).
 
+**WARNING**: Don't use SQLite in a production environment due to limitations to 1 concurrent write connection, making the API and workers nearly unusable.
+
 ### Deploy using appjail-director
 
 **appjail-director.yml**:
