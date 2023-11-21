@@ -237,7 +237,7 @@ Run `appjail-director up` and the entire InvenTree stack will be deployed.
 
 ### Custom Stages
 
-This Makejail defines some custom steps to easily manage the InvenTree web server. They are: `start`, `stop`, `restart` and `check`.
+This Makejail defines some custom stages to easily manage the InvenTree web server. They are: `start`, `stop`, `restart` and `check`.
 
 ```
 # appjail run -s check inventree
