@@ -375,4 +375,4 @@ appjail image export inventree
 
 | Tag         | Arch    | Version           | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
 | ----------- | ------- | ----------------- | ------ | ------------------- | ------------------------ | ------------------------ |
-| `13.2-0.12` | `amd64` | `13.2-RELEASE-p4` | `thin` |      `0.12.9`       |           `1`            |            `1`           |
+| `13.2-0.12` | `amd64` | `13.2-RELEASE` | `thin` |      `0.12.9`       |           `1`            |            `1`           |
