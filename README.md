@@ -342,35 +342,6 @@ jail $ invoke --list
 
 See https://docs.inventree.org/en/stable/start/config for more details.
 
-## How to build the Image
-
-Build the jail:
-
-```sh
-appjail makejail \
-    -j inventree \
-    -f "gh+AppJail-makejails/inventree --file build.makejail" \
-    -o virtualnet=":<random> default" \
-    -o nat
-```
-
-Remove unportable or unnecessary files and directories and export the jail:
-
-```sh
-appjail stop inventree
-appjail cmd local inventree sh -c "rm -f var/log/*"
-appjail cmd local inventree sh -c "rm -f var/cache/pkg/*"
-appjail cmd local inventree sh -c "rm -f var/run/*"
-appjail cmd local inventree vi etc/rc.conf
-appjail image export inventree
-```
-
-### Arguments
-
-* `inventree_version` (default: `0.12.9`): InvenTree version.
-* `inventree_enable_pgsql` (default: `1`): Install with PostgreSQL bindings.
-* `inventree_enable_mysql` (default: `1`): Install with MySQL/MariaDB bindings.
-
 ## Tags
 
 | Tag    | Arch    | Version        | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
