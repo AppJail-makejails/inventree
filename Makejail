@@ -2,7 +2,7 @@ INCLUDE options/options.makejail
 
 ARG inventree_conf=files/config.yaml
 ARG inventree_gunicorn_conf=files/gunicorn.conf.py
-ARG inventree_tag=13.2-0.12
+ARG inventree_tag=13.2
 
 FROM --entrypoint gh+AppJail-makejails/inventree inventree:${inventree_tag}
 
