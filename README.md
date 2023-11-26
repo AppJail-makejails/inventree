@@ -266,7 +266,7 @@ jail $ invoke --list
 
 ### Arguments
 
-* `inventree_tag` (default: `13.2-0.12`): See [#tags](#tags).
+* `inventree_tag` (default: `13.2`): See [#tags](#tags).
 * `inventree_gunicorn_conf` (default: `files/gunicorn.conf.py`): Gunicorn configuration file to be used by the InvenTree web server. An empty file is used by default.
 * `inventree_conf` (default: `files/config.yaml`): InvenTree configuration file. An empty file is used by default.
 
