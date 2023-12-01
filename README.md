@@ -38,7 +38,6 @@ services:
     makejail: gh+AppJail-makejails/inventree
     volumes:
       - inventree-data: /inventree/data
-      - inventree-done: /.inventree-done
     environment:
       - INVENTREE_ADMIN_USER: !ENV '${INVENTREE_ADMIN_USER}'
       - INVENTREE_ADMIN_PASSWORD: !ENV '${INVENTREE_ADMIN_PASSWORD}'
@@ -98,8 +97,6 @@ volumes:
     device: ./volumes/inventree/data/static
   inventree-media:
     device: ./volumes/inventree/data/media
-  inventree-done:
-    device: ./volumes/inventree/done
   db:
     device: ./volumes/mariadb/db
     owner: 88
@@ -348,3 +345,99 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 | ------ | ------- | -------------- | ------ | ------------------- | ------------------------ | ------------------------ |
 | `13.2` | `amd64` | `13.2-RELEASE` | `thin` |      `0.12.9`       |           `1`            |            `1`           |
 | `14.0` | `amd64` | `14.0-RELEASE` | `thin` |      `0.12.9`       |           `1`            |            `1`           |
+
+## Notes
+
+* If you want to skip `invoke update` when running the Makejail, simply create a volume and mount it in `/.inventree-done`. With this approach `invoke update` is executed only once. But you need to create more volumes to keep the files that this command creates:
+
+```yaml
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+
+services:
+  inventree:
+    name: inventree
+    makejail: gh+AppJail-makejails/inventree
+    volumes:
+      - inventree-data: /inventree/data
+      - inventree-locale: /inventree/src/InvenTree/locale
+      - inventree-i18n: /inventree/src/InvenTree/InvenTree/static_i18n/i18n
+      - inventree-done: /.inventree-done
+    environment:
+      - INVENTREE_ADMIN_USER: !ENV '${INVENTREE_ADMIN_USER}'
+      - INVENTREE_ADMIN_PASSWORD: !ENV '${INVENTREE_ADMIN_PASSWORD}'
+      - INVENTREE_ADMIN_EMAIL: !ENV '${INVENTREE_ADMIN_EMAIL}'
+      - INVENTREE_CACHE_HOST: inventree-redis
+      - INVENTREE_DEBUG: False
+      - INVENTREE_DB_ENGINE: mysql
+      - INVENTREE_DB_HOST: inventree-mariadb
+      - INVENTREE_DB_PORT: 3306
+      - INVENTREE_DB_NAME: inventree
+      - INVENTREE_DB_USER: inventree
+      - INVENTREE_DB_PASSWORD: !ENV '${INVENTREE_DB_PASSWORD}'
+      - INVENTREE_BACKGROUND_WORKERS: 4
+      - INVENTREE_TIMEZONE: America/Caracas
+      - INVENTREE_LANGUAGE: es-ES
+      - INVENTREE_CURRENCIES: USD
+    arguments:
+      - inventree_gunicorn_conf: !ENV '${INVENTREE_GUNICORN_CONF}'
+    options:
+      - healthcheck: 'health_cmd:jail:/inventree/init/check.sh "recover_cmd:jail:su -l inventree -c /inventree/init/restart.sh"'
+    scripts:
+      - type: local
+        text: 'service appjail-health onerestart'
+  db:
+    name: inventree-mariadb
+    makejail: gh+AppJail-makejails/mariadb
+    priority: 97
+    arguments:
+      - mariadb_user: inventree
+      - mariadb_password: !ENV '${INVENTREE_DB_PASSWORD}'
+      - mariadb_database: inventree
+      - mariadb_root_password: !ENV '${INVENTREE_DB_ROOT_PASSWORD}'
+    volumes:
+      - db: /var/db/mysql
+      - db-done: /.mariadb-done
+  cache:
+    name: inventree-redis
+    makejail: gh+AppJail-makejails/redis
+    priority: 98
+  reverse-proxy:
+    name: inventree-nginx
+    makejail: gh+AppJail-makejails/nginx
+    options:
+      - copydir: !ENV '${PWD}/copydir-files'
+      - file: /usr/local/etc/nginx/nginx.conf
+      - expose: 80
+    priority: 100
+    volumes:
+      - inventree-static: /usr/local/www/inventree/static
+      - inventree-media: /usr/local/www/inventree/media
+
+volumes:
+  inventree-data:
+    device: ./volumes/inventree/data
+    owner: 1001
+    group: 1001
+  inventree-static:
+    device: ./volumes/inventree/data/static
+  inventree-media:
+    device: ./volumes/inventree/data/media
+  inventree-locale:
+    device: ./volumes/inventree/data/locale
+    owner: 1001
+    group: 1001
+  inventree-i18n:
+    device: ./volumes/inventree/data/i18n
+    owner: 1001
+    group: 1001
+  inventree-done:
+    device: ./volumes/inventree/done
+  db:
+    device: ./volumes/mariadb/db
+    owner: 88
+    group: 88
+  db-done:
+    device: ./volumes/mariadb/done
+```
