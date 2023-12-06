@@ -1,6 +1,6 @@
 INCLUDE options/options.makejail
 
-ARG inventree_version=0.12.9
+ARG inventree_version=0.12.10
 ARG inventree_enable_pgsql=1
 ARG inventree_enable_mysql=1
 
