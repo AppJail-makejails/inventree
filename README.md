@@ -339,6 +339,15 @@ jail $ invoke --list
 
 See https://docs.inventree.org/en/stable/start/config for more details.
 
+### Volumes
+
+| Name             | Owner | Group | Perm | Type | Mountpoint                                           |
+| ---------------- | ----- | ----- | ---- | ---- | ---------------------------------------------------- |
+| inventree-data   | 1001  | 1001  |  -   |  -   | /inventree/data                                      |
+| inventree-locale | 1001  | 1001  |  -   |  -   | /inventree/src/InvenTree/locale                      |
+| inventree-i18n   | 1001  | 1001  |  -   |  -   | /inventree/src/InvenTree/InvenTree/static\_i18n/i18n |
+| inventree-done   |  -    |  -    |  -   |  -   | /.inventree-done                                     |
+
 ## Tags
 
 | Tag    | Arch    | Version        | Type   | `inventree_version`  | `inventree_enable_pgsql` | `inventree_enable_mysql` |
