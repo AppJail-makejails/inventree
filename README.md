@@ -357,7 +357,7 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 
 ## Notes
 
-* If you want to skip `invoke update` when running the Makejail, simply create a volume and mount it in `/.inventree-done`. With this approach `invoke update` is executed only once. But you need to create more volumes to keep the files that this command creates:
+1. If you want to skip `invoke update` when running the Makejail, simply create a volume and mount it in `/.inventree-done`. With this approach `invoke update` is executed only once. But you need to create more volumes to keep the files that this command creates:
 
 ```yaml
 options:
