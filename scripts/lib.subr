@@ -4,7 +4,7 @@ select()
 {
 	local out errlevel
 
-	out=`dasel -f "${INVENTREE_CONFIG}" -r yaml "$@"`
+	out=`dasel -f "${INVENTREE_CONFIG}" -r yaml "$@" 2>&1`
 
 	errlevel=$?
 
@@ -20,7 +20,7 @@ put()
 {
 	local out errlevel
 
-	out=`dasel put -f "${INVENTREE_CONFIG}" -r yaml "$@"`
+	out=`dasel put -f "${INVENTREE_CONFIG}" -r yaml "$@" 2>&1`
 
 	errlevel=$?
 
