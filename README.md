@@ -263,7 +263,7 @@ jail $ invoke --list
 
 ### Arguments
 
-* `inventree_tag` (default: `13.2`): See [#tags](#tags).
+* `inventree_tag` (default: `13.3`): See [#tags](#tags).
 * `inventree_gunicorn_conf` (default: `files/gunicorn.conf.py`): Gunicorn configuration file to be used by the InvenTree web server. An empty file is used by default.
 * `inventree_conf` (default: `files/config.yaml`): InvenTree configuration file. An empty file is used by default.
 
@@ -352,7 +352,7 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 
 | Tag    | Arch    | Version        | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
 | ------ | ------- | -------------- | ------ | ------------------- | ------------------------ | ------------------------ |
-| `13.2` | `amd64` | `13.2-RELEASE` | `thin` |      `0.14.2`       |           `1`            |            `1`           |
+| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |      `0.14.2`       |           `1`            |            `1`           |
 | `14.0` | `amd64` | `14.0-RELEASE` | `thin` |      `0.14.2`       |           `1`            |            `1`           |
 
 ## Notes
