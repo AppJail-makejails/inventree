@@ -16,9 +16,9 @@ RAW if [ ! -f "${inventree_conf}" ]; then
     RAW exit 1
 RAW fi
 
-COPY --verbose ${inventree_conf} /inventree/src/InvenTree/config.yaml
-CMD chown inventree:inventree /inventree/src/InvenTree/config.yaml
-CMD chmod 640 /inventree/src/InvenTree/config.yaml
+COPY --verbose ${inventree_conf} /inventree/src/src/backend/InvenTree/config.yaml
+CMD chown inventree:inventree /inventree/src/src/backend/InvenTree/config.yaml
+CMD chmod 640 /inventree/src/src/backend/InvenTree/config.yaml
 
 USER inventree
 WORKDIR /scripts
@@ -95,8 +95,8 @@ RAW if [ ! -f "${inventree_gunicorn_conf}" ]; then
     RAW exit 1
 RAW fi
 
-COPY --verbose ${inventree_gunicorn_conf} /inventree/src/InvenTree/gunicorn.conf.py
-CMD chown inventree:inventree /inventree/src/InvenTree/gunicorn.conf.py
+COPY --verbose ${inventree_gunicorn_conf} /inventree/src/src/backend/InvenTree/gunicorn.conf.py
+CMD chown inventree:inventree /inventree/src/src/backend/InvenTree/gunicorn.conf.py
 
 STOP
 

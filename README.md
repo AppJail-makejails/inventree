@@ -341,12 +341,12 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 
 ### Volumes
 
-| Name             | Owner | Group | Perm | Type | Mountpoint                                           |
-| ---------------- | ----- | ----- | ---- | ---- | ---------------------------------------------------- |
-| inventree-data   | 1001  | 1001  |  -   |  -   | /inventree/data                                      |
-| inventree-locale | 1001  | 1001  |  -   |  -   | /inventree/src/InvenTree/locale                      |
-| inventree-i18n   | 1001  | 1001  |  -   |  -   | /inventree/src/InvenTree/InvenTree/static\_i18n/i18n |
-| inventree-done   |  -    |  -    |  -   |  -   | /.inventree-done                                     |
+| Name             | Owner | Group | Perm | Type | Mountpoint                                                       |
+| ---------------- | ----- | ----- | ---- | ---- | ---------------------------------------------------------------- |
+| inventree-data   | 1001  | 1001  |  -   |  -   | /inventree/data                                                  |
+| inventree-locale | 1001  | 1001  |  -   |  -   | /inventree/src/src/backend/InvenTree/locale                      |
+| inventree-i18n   | 1001  | 1001  |  -   |  -   | /inventree/src/src/backend/InvenTree/InvenTree/static\_i18n/i18n |
+| inventree-done   |  -    |  -    |  -   |  -   | /.inventree-done                                                 |
 
 ## Tags
 
@@ -370,8 +370,8 @@ services:
     makejail: gh+AppJail-makejails/inventree
     volumes:
       - inventree-data: /inventree/data
-      - inventree-locale: /inventree/src/InvenTree/locale
-      - inventree-i18n: /inventree/src/InvenTree/InvenTree/static_i18n/i18n
+      - inventree-locale: /inventree/src/src/backend/InvenTree/locale
+      - inventree-i18n: /inventree/src/src/backend/InvenTree/InvenTree/static_i18n/i18n
       - inventree-done: /.inventree-done
     environment:
       - INVENTREE_ADMIN_USER: !ENV '${INVENTREE_ADMIN_USER}'

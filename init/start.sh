@@ -2,7 +2,7 @@
 
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/inventree/.local/bin; export PATH
 
-inventree_src="/inventree/src"
+inventree_src="/inventree/src/src/backend"
 inventree_srvdir="${inventree_src}/InvenTree"
 inventree_logdir="/inventree/log"
 inventree_tmpdir="/inventree/run"
@@ -25,7 +25,7 @@ fi
 
 gunicorn \
 	--daemon \
-    --config "${inventree_srvdir}/gunicorn.conf.py" \
+	--config "${inventree_srvdir}/gunicorn.conf.py" \
 	--chdir "${inventree_srvdir}" \
 	--user inventree \
 	--group inventree \

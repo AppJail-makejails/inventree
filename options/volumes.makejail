@@ -1,4 +1,4 @@
 OPTION volume=inventree-data mountpoint:/inventree/data owner:1001 group:1001
-OPTION volume=inventree-locale mountpoint:/inventree/src/InvenTree/locale owner:1001 group:1001
-OPTION volume=inventree-i18n mountpoint:/inventree/src/InvenTree/InvenTree/static_i18n/i18n owner:1001 group:1001
+OPTION volume=inventree-locale mountpoint:/inventree/src/src/backend/InvenTree/locale owner:1001 group:1001
+OPTION volume=inventree-i18n mountpoint:/inventree/src/src/backend/InvenTree/InvenTree/static_i18n/i18n owner:1001 group:1001
 OPTION volume=inventree-done mountpoint:/.inventree-done

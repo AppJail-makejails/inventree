@@ -1,4 +1,4 @@
-INVENTREE_CONFIG="/inventree/src/InvenTree/config.yaml"
+INVENTREE_CONFIG="/inventree/src/src/backend/InvenTree/config.yaml"
 
 select()
 {
