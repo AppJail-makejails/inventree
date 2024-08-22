@@ -352,8 +352,8 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 
 | Tag    | Arch    | Version        | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
 | ------ | ------- | -------------- | ------ | ------------------- | ------------------------ | ------------------------ |
-| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |      `0.15.3`       |           `1`            |            `1`           |
-| `14.1` | `amd64` | `14.1-RELEASE` | `thin` |      `0.15.3`       |           `1`            |            `1`           |
+| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |      `0.15.8`       |           `1`            |            `1`           |
+| `14.1` | `amd64` | `14.1-RELEASE` | `thin` |      `0.15.8`       |           `1`            |            `1`           |
 
 ## Notes
 
