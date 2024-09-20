@@ -1,0 +1,12 @@
+--- src/backend/InvenTree/InvenTree/cache.py.orig	2024-09-18 15:48:09.656076000 -0400
++++ src/backend/InvenTree/InvenTree/cache.py	2024-09-18 15:54:18.604178000 -0400
+@@ -89,9 +89,6 @@
+                         socket.TCP_KEEPINTVL: cache_setting(
+                             'keepalive_interval', 1, typecast=int
+                         ),
+-                        socket.TCP_USER_TIMEOUT: cache_setting(
+-                            'user_timeout', 1000, typecast=int
+-                        ),
+                     },
+                 },
+             },
