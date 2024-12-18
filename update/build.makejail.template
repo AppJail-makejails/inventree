@@ -1,6 +1,5 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
-INCLUDE resizewin-fix.makejail
 
 ARG inventree_version=%%VERSION%%
 ARG inventree_enable_pgsql=1

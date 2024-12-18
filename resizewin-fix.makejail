@@ -1,3 +1,0 @@
-# workaround to avoid resizewin(1) from being suspended.
-CMD sed -i '' -Ee '/resizewin/d' /root/.login
-CMD sed -i '' -Ee '/resizewin/d' /root/.profile
