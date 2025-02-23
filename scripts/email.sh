@@ -11,6 +11,8 @@
 # - INVENTREE_EMAIL_SENDER (optional)
 # - INVENTREE_EMAIL_PREFIX (optional)
 
+. /scripts/lib.subr
+
 if [ -n "${INVENTREE_EMAIL_BACKEND}" ]; then
     info "Configuring email.backend -> ${INVENTREE_EMAIL_BACKEND}"
     put -t string -v "${INVENTREE_EMAIL_BACKEND}" email.backend

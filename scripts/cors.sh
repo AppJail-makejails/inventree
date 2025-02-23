@@ -5,6 +5,8 @@
 # - INVENTREE_CORS_ORIGIN_ALLOW_ALL (optional)
 # - INVENTREE_CORS_ORIGIN_WHITELIST (optional)
 
+. /scripts/lib.subr
+
 if [ -n "${INVENTREE_ALLOWED_HOSTS}" ]; then
     info "Configuring allowed_hosts -> ${INVENTREE_ALLOWED_HOSTS}"
 

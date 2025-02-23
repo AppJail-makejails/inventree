@@ -3,6 +3,8 @@
 # Environment:
 # - INVENTREE_EXTRA_URL_SCHEMES (optional)
 
+. /scripts/lib.subr
+
 if [ -n "${INVENTREE_EXTRA_URL_SCHEMES}" ]; then
     info "Configuring extra_url_schemes -> ${INVENTREE_EXTRA_URL_SCHEMES}"
 
