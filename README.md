@@ -4,7 +4,7 @@ InvenTree is an open-source Inventory Management System which provides powerful 
 
 inventree.org
 
-<img src="https://github.com/inventree/InvenTree/raw/master/images/logo/inventree.png" alt="inventree logo" width="%60" height="auto">
+<img src="https://github.com/inventree/InvenTree/blob/master/docs/docs/assets/logo.png?raw=true" alt="inventree logo" width="%60" height="auto">
 
 ## How to use this Makejail
 
