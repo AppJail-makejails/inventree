@@ -265,7 +265,7 @@ jail $ invoke --list
 
 ### Arguments
 
-* `inventree_tag` (default: `13.4`): See [#tags](#tags).
+* `inventree_tag` (default: `13.5`): See [#tags](#tags).
 * `inventree_ajspec` (default: `gh+AppJail-makejails/inventree`): Entry point where the `appjail-ajspec(5)` file is located.
 * `inventree_gunicorn_conf` (default: `files/gunicorn.conf.py`): Gunicorn configuration file to be used by the InvenTree web server. An empty file is used by default.
 * `inventree_conf` (default: `files/config.yaml`): InvenTree configuration file. An empty file is used by default.
@@ -355,7 +355,7 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 
 | Tag    | Arch    | Version        | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
 | ------ | ------- | -------------- | ------ | ------------------- | ------------------------ | ------------------------ |
-| `13.4` | `amd64` | `13.4-RELEASE` | `thin` |      `0.17.7`       |           `1`            |            `1`           |
+| `13.5` | `amd64` | `13.5-RELEASE` | `thin` |      `0.17.7`       |           `1`            |            `1`           |
 | `14.2` | `amd64` | `14.2-RELEASE` | `thin` |      `0.17.7`       |           `1`            |            `1`           |
 
 ## Notes
