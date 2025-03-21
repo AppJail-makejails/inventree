@@ -2,6 +2,7 @@ INCLUDE options/options.makejail
 
 ARG inventree_conf=files/config.yaml
 ARG inventree_gunicorn_conf=files/gunicorn.conf.py
+ARG inventree_platform_ui=0
 ARG inventree_ajspec=gh+AppJail-makejails/inventree
 ARG inventree_tag=13.5
 
@@ -79,6 +80,14 @@ RAW else
     WORKDIR /inventree/src
     ENV PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/inventree/.local/bin
     RUN invoke update
+
+    RAW if [ "${inventree_platform_ui}" != 0 ]; then
+        CMD --juser inventree inventree_version=`sh -c "cd ~/src; invoke version | grep -Ee '^InvenTree   ' | cut -d' ' -f4"`; \
+            mkdir -p /inventree/src/src/backend/InvenTree/web/static; \
+            invoke frontend-download -t "${inventree_version}"; \
+            cp -a /inventree/src/src/backend/InvenTree/web/static/web /inventree/data/static
+    RAW fi
+
     CMD mkdir -p /.inventree-done
     CMD touch /.inventree-done/skip-initialization
 RAW fi

@@ -55,7 +55,10 @@ services:
       - INVENTREE_BACKGROUND_WORKERS: 4
       - INVENTREE_TIMEZONE: America/Caracas
       - INVENTREE_LANGUAGE: es-ES
+      # Need to use FQDN, see https://docs.djangoproject.com/en/5.1/ref/validators/
+      - INVENTREE_SITE_URL: 'http://inventree-nginx.ajnet.appjail'
     arguments:
+      - inventree_platform_ui: '1'
       - inventree_gunicorn_conf: !ENV '${INVENTREE_GUNICORN_CONF}'
     options:
       - healthcheck: 'health_cmd:jail:/inventree/init/check.sh "recover_cmd:jail:su -l inventree -c /inventree/init/restart.sh"'
@@ -92,19 +95,19 @@ services:
 
 volumes:
   inventree-data:
-    device: ./volumes/inventree/data
+    device: .volumes/inventree/data
     owner: 1001
     group: 1001
   inventree-static:
-    device: ./volumes/inventree/data/static
+    device: .volumes/inventree/data/static
   inventree-media:
-    device: ./volumes/inventree/data/media
+    device: .volumes/inventree/data/media
   db:
-    device: ./volumes/mariadb/db
+    device: .volumes/mariadb/db
     owner: 88
     group: 88
   db-done:
-    device: ./volumes/mariadb/done
+    device: .volumes/mariadb/done
 ```
 
 **.env**:
@@ -267,6 +270,7 @@ jail $ invoke --list
 
 * `inventree_tag` (default: `13.5`): See [#tags](#tags).
 * `inventree_ajspec` (default: `gh+AppJail-makejails/inventree`): Entry point where the `appjail-ajspec(5)` file is located.
+* `inventree_platform_ui` (default: `0`): Install with the new web UI.
 * `inventree_gunicorn_conf` (default: `files/gunicorn.conf.py`): Gunicorn configuration file to be used by the InvenTree web server. An empty file is used by default.
 * `inventree_conf` (default: `files/config.yaml`): InvenTree configuration file. An empty file is used by default.
 
