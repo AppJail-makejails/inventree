@@ -6,7 +6,7 @@ ARG inventree_enable_pgsql=1
 ARG inventree_enable_mysql=1
 
 # Build and/or runtime dependencies.
-PKG dasel gettext python py%%PYVER%%-invoke py%%PYVER%%-sqlite3 pango rust libxml2 libxslt py%%PYVER%%-xmlsec pkgconf py%%PYVER%%-rapidfuzz xorg-fonts
+PKG dasel gettext python py%%PYVER%%-invoke py%%PYVER%%-sqlite3 pango rust libxml2 libxslt py%%PYVER%%-xmlsec pkgconf py%%PYVER%%-rapidfuzz xorg-fonts poppler-utils
 
 # Pillow.
 CMD --local ./install-pillow.sh "${APPJAIL_JAILNAME}"
