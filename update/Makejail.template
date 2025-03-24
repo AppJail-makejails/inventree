@@ -82,7 +82,9 @@ RAW else
     RUN invoke update
 
     RAW if [ "${inventree_platform_ui}" != 0 ]; then
-        CMD --juser inventree inventree_version=`sh -c "cd ~/src; invoke version | grep -Ee '^InvenTree   ' | cut -d' ' -f4"`; \
+        CMD --juser inventree \
+            cd /inventree/src; \
+            inventree_version=`sh -c "invoke version | grep -Ee '^InvenTree   ' | cut -d' ' -f4"`; \
             mkdir -p /inventree/src/src/backend/InvenTree/web/static; \
             invoke frontend-download -t "${inventree_version}"; \
             cp -a /inventree/src/src/backend/InvenTree/web/static/web /inventree/data/static
