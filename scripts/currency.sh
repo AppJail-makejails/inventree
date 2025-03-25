@@ -14,6 +14,6 @@ put -t string -v "${INVENTREE_BASE_CURRENCY}" base_currency
 
 info "Configuring currencies -> ${INVENTREE_CURRENCIES}"
 
-for currency in ${INVENTREE_CURRENCIES}; do
+printf "%s\n" "${INVENTREE_CURRENCIES}" | sed -Ee 's/ /\n/g' | while IFS= read -r currency; do
     put -t string -v "${currency}" 'currencies.[]'
 done

@@ -10,7 +10,7 @@
 if [ -n "${INVENTREE_ALLOWED_HOSTS}" ]; then
     info "Configuring allowed_hosts -> ${INVENTREE_ALLOWED_HOSTS}"
 
-    for allowed_host in ${INVENTREE_ALLOWED_HOSTS}; do
+    printf "%s\n" "${INVENTREE_ALLOWED_HOSTS}" | sed -Ee 's/ /\n/g' | while IFS= read -r allowed_host; do
         put -t string -v "${allowed_host}" 'allowed_hosts.[]'
     done
 fi
@@ -23,7 +23,7 @@ fi
 if [ -n "${INVENTREE_CORS_ORIGIN_WHITELIST}" ]; then
     info "Configuring cors.whitelist -> ${INVENTREE_CORS_ORIGIN_WHITELIST}"
 
-    for origin in ${INVENTREE_CORS_ORIGIN_WHITELIST}; do
+    printf "%s\n" "${INVENTREE_CORS_ORIGIN_WHITELIST}" | sed -Ee 's/ /\n/g' | while IFS= read -r origin; do
         put -t string -v "${origin}" 'cors.whitelist.[]'
     done
 fi

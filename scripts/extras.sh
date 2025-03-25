@@ -8,7 +8,7 @@
 if [ -n "${INVENTREE_EXTRA_URL_SCHEMES}" ]; then
     info "Configuring extra_url_schemes -> ${INVENTREE_EXTRA_URL_SCHEMES}"
 
-    for extra_url_scheme in ${INVENTREE_EXTRA_URL_SCHEMES}; do
+    printf "%s\n" "${INVENTREE_EXTRA_URL_SCHEMES}" | sed -Ee 's/ /\n/g' | while IFS= read -r extra_url_scheme; do
         put -t string -v "${extra_url_scheme}" 'extra_url_schemes.[]'
     done
 fi
