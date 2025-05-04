@@ -40,7 +40,10 @@ RUN python -m pip install --upgrade pip
 CMD fetch -o /tmp/inventree.tar.gz https://github.com/inventree/InvenTree/archive/refs/tags/${inventree_version}.tar.gz
 CMD mkdir -p /inventree/src
 CMD tar -C /inventree/src --strip-components=1 -xf /tmp/inventree.tar.gz
-# Patch to fix InvenTree/InvenTree/cache.py.
+COPY files/patch-src-backend-requirements.txt src
+CMD cd /inventree/src; patch < patch-src-backend-requirements.txt.patch
+CMD rm -f /inventree/src/src/backend/requirements.txt.orig
+CMD rm -f /inventree/src/patch-src-backend-requirements.txt.patch
 COPY files/patch-src-backend-InvenTree-InvenTree-cache.py.patch src
 CMD cd /inventree/src; patch < patch-src-backend-InvenTree-InvenTree-cache.py.patch
 CMD rm -f /inventree/src/src/backend/InvenTree/InvenTree/cache.py.orig
