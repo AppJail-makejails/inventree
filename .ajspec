@@ -14,4 +14,3 @@ tags+: 14.2
 14.2.size.amd64: 1045787279
 14.2.source.amd64: "https://images.all101bsd.download/inventree/14.2-amd64-image.appjail"
 14.2.source.amd64+: "http://appjail.hpc.at/inventree/14.2-amd64-image.appjail"
-maintenance: "This image is uploading, please wait a moment and try again. If you are importing this image using a Makejail that has the '--<name>_ajspec' argument, you can use the 'reproduce' method to use 'appjail-reproduce'. See 'appjail-image(5)' for details."
