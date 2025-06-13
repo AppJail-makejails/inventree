@@ -360,7 +360,7 @@ See https://docs.inventree.org/en/stable/start/config for more details.
 | Tag    | Arch    | Version        | Type   | `inventree_version` | `inventree_enable_pgsql` | `inventree_enable_mysql` |
 | ------ | ------- | -------------- | ------ | ------------------- | ------------------------ | ------------------------ |
 | `13.5` | `amd64` | `13.5-RELEASE` | `thin` |      `0.17.13`       |           `1`            |            `1`           |
-| `14.2` | `amd64` | `14.2-RELEASE` | `thin` |      `0.17.13`       |           `1`            |            `1`           |
+| `14.3` | `amd64` | `14.3-RELEASE` | `thin` |      `0.17.13`       |           `1`            |            `1`           |
 
 ## Notes
 
