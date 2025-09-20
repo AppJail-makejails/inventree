@@ -1,16 +1,17 @@
 tags+: 13.5
 13.5.arch: amd64
 13.5.name: "inventree"
-13.5.timestamp.amd64: 1758071381
-13.5.sum.amd64: 7a94712f105ca587c22c5717fa8ddff4cb41d04d0c737739bd0121f3d543e84d
-13.5.size.amd64: 1016655964
+13.5.timestamp.amd64: 1758331516
+13.5.sum.amd64: 65ee6f662d9788892fe41131663168201dee6a3b20b7e301c61495c9f072938f
+13.5.size.amd64: 1016564581
 13.5.source.amd64: "https://images.all101bsd.download/inventree/13.5-amd64-image.appjail"
 13.5.source.amd64+: "http://appjail.hpc.at/inventree/13.5-amd64-image.appjail"
 tags+: 14.3
 14.3.arch: amd64
 14.3.name: "inventree"
-14.3.timestamp.amd64: 1758079370
-14.3.sum.amd64: 7b2e493029d582fb0a139e93dbc9ad92e9a84b8c3a46bda2b303b73ea6beade2
-14.3.size.amd64: 1016544242
+14.3.timestamp.amd64: 1758339366
+14.3.sum.amd64: 4f0cfef0119f77ad95a893f17bba5cf9fd8939885bc577ef79a419e6476f8ada
+14.3.size.amd64: 1016718885
 14.3.source.amd64: "https://images.all101bsd.download/inventree/14.3-amd64-image.appjail"
 14.3.source.amd64+: "http://appjail.hpc.at/inventree/14.3-amd64-image.appjail"
+maintenance: "This image is uploading, please wait a moment and try again. If you are importing this image using a Makejail that has the '--<name>_ajspec' argument, you can use the 'reproduce' method to use 'appjail-reproduce'. See 'appjail-image(5)' for details."
