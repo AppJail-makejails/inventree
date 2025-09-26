@@ -292,6 +292,7 @@ jail $ invoke --list
 * `INVENTREE_SITE_URL` (optional).
 * `INVENTREE_CACHE_HOST` (optional): Redis address or hostname.
 * `INVENTREE_CACHE_PORT` (optional): Redis port to connect to.
+* `INVENTREE_TRUSTED_ORIGINS` (optional): List of trusted origins.
 * `INVENTREE_ALLOWED_HOSTS` (optional): List of allowed hosts.
 * `INVENTREE_CORS_ORIGIN_ALLOW_ALL` (optional): Allow all remote URLS for CORS checks.
 * `INVENTREE_CORS_ORIGIN_WHITELIST` (optional): List of whitelisted CORS URLs.

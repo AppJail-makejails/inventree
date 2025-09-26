@@ -1,11 +1,20 @@
 #!/bin/sh
 
 # Environment:
+# - INVENTREE_TRUSTED_ORIGINS (optional)
 # - INVENTREE_ALLOWED_HOSTS (optional)
 # - INVENTREE_CORS_ORIGIN_ALLOW_ALL (optional)
 # - INVENTREE_CORS_ORIGIN_WHITELIST (optional)
 
 . /scripts/lib.subr
+
+if [ -n "${INVENTREE_TRUSTED_ORIGINS}" ]; then
+    info "Configuring trusted_origins -> ${INVENTREE_TRUSTED_ORIGINS}"
+
+    printf "%s\n" "${INVENTREE_TRUSTED_ORIGINS}" | sed -Ee 's/ /\n/g' | while IFS= read -r trusted_origin; do
+        put -t string -v "${trusted_origin}" 'trusted_origins.[]'
+    done
+fi
 
 if [ -n "${INVENTREE_ALLOWED_HOSTS}" ]; then
     info "Configuring allowed_hosts -> ${INVENTREE_ALLOWED_HOSTS}"
