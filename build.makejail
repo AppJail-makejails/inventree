@@ -1,7 +1,7 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-ARG inventree_version=1.1.6
+ARG inventree_version=1.1.7
 ARG inventree_enable_pgsql=1
 ARG inventree_enable_mysql=1
 
