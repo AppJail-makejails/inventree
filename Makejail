@@ -4,7 +4,7 @@ ARG inventree_conf=files/config.yaml
 ARG inventree_gunicorn_conf=files/gunicorn.conf.py
 ARG inventree_platform_ui=0
 ARG inventree_ajspec=gh+AppJail-makejails/inventree
-ARG inventree_tag=13.5
+ARG inventree_tag=14.3
 
 FROM --entrypoint "${inventree_ajspec}" inventree:${inventree_tag}
 
